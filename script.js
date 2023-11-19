@@ -1,12 +1,27 @@
 function getData(filename, div) {
-    fetch (filename)
-    .then(response => response.text())
-    .then(html => {
-        html = document.getElementById(div).innerHTML;
-        return html;
-    })
-    .catch(error => console.error("Error loading HTML:", error));
+    return fetch(filename)
+        .then(response => response.text())
+        .then(html => {
+            // Set the innerHTML of the specified div element
+            document.getElementById(div).innerHTML = html;
+            // Return the innerHTML
+            return html;
+        })
+        .catch(error => {
+            console.error("Error loading HTML:", error);
+            throw error; // Re-throw the error to propagate it to the next catch block
+        });
 }
+
+getData('index2.html', 'test')
+    .then(html => {
+        // Do something with the fetched HTML
+        console.log(html);
+    })
+    .catch(error => {
+        // Handle errors
+        console.error(error);
+    });
 
 // Example usage
 function changeContent(tab) {
