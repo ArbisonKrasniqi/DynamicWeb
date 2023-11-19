@@ -1,6 +1,6 @@
 function getData(filename, div) {
     fetch (filename)
-    .then(response => response.texxt())
+    .then(response => response.text())
     .then(html => {
         document.getElementById(div).innerHTML = html;
         return html;
