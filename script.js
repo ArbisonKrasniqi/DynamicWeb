@@ -2,7 +2,7 @@ function getData(filename, div) {
     fetch (filename)
     .then(response => response.text())
     .then(html => {
-        document.getElementById(div).innerHTML = html;
+        html = document.getElementById(div).innerHTML;
         return html;
     })
     .catch(error => console.error("Error loading HTML:", error));
