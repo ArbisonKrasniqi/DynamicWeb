@@ -1,15 +1,14 @@
-function loadExternalHTML(url, targetElementId) {
-    fetch(url)
-        .then(response => response.text())
-        .then(html => {
-            // Inject the HTML into the specified target element
-            document.getElementById(targetElementId).innerHTML = html;
-        })
-        .catch(error => console.error('Error loading HTML:', error));
+function getData(filename, div) {
+    fetch (filename)
+    .then(response => response.texxt())
+    .then(html => {
+        document.getElementById(div).innerHTML = html;
+        return html;
+    })
+    .catch(error => console.error("Error loading HTML:", error));
 }
 
 // Example usage
-
 function changeContent(tab) {
     var contentDiv = document.getElementById('dynamic');
     console.log("Clicked tab "+tab);
@@ -26,13 +25,7 @@ function changeContent(tab) {
             break;
 
         case 'genres':
-            contentDiv.innerHTML = loadExternalHTML("index2.html", "test")
-                .then(html => {
-                    contentDiv.innerHTML = html;
-                })
-                .catch(error => {
-                    // Handle the error, if needed
-                });
+            contentDiv.innerHTML = getData("index2.html", "test");
             break;
 
         case 'settings':
