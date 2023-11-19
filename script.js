@@ -26,7 +26,13 @@ function changeContent(tab) {
             break;
 
         case 'genres':
-            contentDiv.innerHTML = loadExternalHTML("index2.html", "test");
+            contentDiv.innerHTML = loadExternalHTML("index2.html", "test")
+                .then(html => {
+                    contentDiv.innerHTML = html;
+                })
+                .catch(error => {
+                    // Handle the error, if needed
+                });
             break;
 
         case 'settings':
