@@ -54,9 +54,9 @@ function changeContent(tab) {
                 .then(response => response.text())
                 .then(html => {
                     contentDiv.innerHTML = html;
-                    logFavorites();
                 })
                 .catch(error => console.error('Error loading HTML:', error));
+                logFavorites();
             break;
         
         default:
