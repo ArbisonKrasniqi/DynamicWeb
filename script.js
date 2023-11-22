@@ -1,3 +1,18 @@
+let favorites;
+
+function logFavorites() {
+    for (let i = 0; i < favorites.length; i++) {
+        console.log(favorites[i]);
+    }
+}
+
+function addToFavorite(element) {
+    let parent = element.parentElement;
+    parent.classList.add('Favorites');
+    parent.style.backgroundColor = 'red';
+    favorites = document.getElementsByClassName('Favorites');
+}
+
 function loadExternalHTML(url, targetElementId) {
     fetch(url)
         .then(response => response.text())
@@ -17,7 +32,12 @@ function changeContent(tab) {
             break;
 
         case 'songs':
-            contentDiv.innerHTML = "songs"; //Songs Here
+            fetch('songs.html')
+                .then(response => response.text())
+                .then(html => {
+                    contentDiv.innerHTML = html;
+                })
+                .catch(error => console.error('Error loading HTML:', error));
             break;
 
         case 'genres':
@@ -29,11 +49,18 @@ function changeContent(tab) {
                 .catch(error => console.error('Error loading HTML:', error));
             break;
 
-        case 'settings':
-            contentDiv.innerHTML = "settings"; //Settings here
+        case 'favorites':
+            fetch('favorites.html')
+                .then(response => response.text())
+                .then(html => {
+                    contentDiv.innerHTML = html;
+                })
+                .catch(error => console.error('Error loading HTML:', error));
             break;
         
         default:
             break;
     }
 }
+
+
