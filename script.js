@@ -56,7 +56,7 @@ function changeContent(tab) {
                     contentDiv.innerHTML = html;
                 })
                 .catch(error => console.error('Error loading HTML:', error));
-                logFavorites();
+                alert(logFavorites());
             break;
         
         default:
